@@ -14,8 +14,8 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wc.cbClsExtra = 0; // Class extra bytes
 	wc.cbWndExtra = 0; // Window extra bytes
 	wc.hInstance = hInstance; // Instance handle
-	wc.hIcon = LoadIcon(NULL, IDI_HAND); // Icon handle
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW); // Cursor handle
+	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO); // Icon handle
+	wc.hCursor = LoadCursor(NULL, IDC_NO); // Cursor handle
 	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // Background color
 	wc.lpszMenuName = NULL; // Menu name
 	wc.lpszClassName = "MyWndClass"; // WNDCLASS name
