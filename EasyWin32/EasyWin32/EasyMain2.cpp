@@ -16,7 +16,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wc.hInstance = hInstance; // Instance handle
 	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO); // Icon handle
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW); // Cursor handle
-	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 2); // Background color
+	wc.hbrBackground = (HBRUSH)(COLOR_MENU + 0); // Background color
 	wc.lpszMenuName = NULL; // Menu name
 	wc.lpszClassName = "MyWndClass"; // WNDCLASS name
 
