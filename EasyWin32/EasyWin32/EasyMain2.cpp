@@ -9,12 +9,12 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	HWND hwnd;
 	MSG msg;
 	/***************** 1. Define Windows class ****************************/
-	wc.style = CS_NOCLOSE; // Class style
+	wc.style = 0; // Class style
 	wc.lpfnWndProc = (WNDPROC)WndProc; // Window procedure address
 	wc.cbClsExtra = 0; // Class extra bytes
 	wc.cbWndExtra = 0; // Window extra bytes
 	wc.hInstance = hInstance; // Instance handle
-	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO); // Icon handle
+	wc.hIcon = LoadIcon(NULL, IDI_HAND); // Icon handle
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW); // Cursor handle
 	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // Background color
 	wc.lpszMenuName = NULL; // Menu name
