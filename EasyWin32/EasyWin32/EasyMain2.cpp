@@ -62,7 +62,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
-		Ellipse(hdc, 10, 10, 200, 100);
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
+
 		EndPaint(hwnd, &ps);
 		return 0;
 
