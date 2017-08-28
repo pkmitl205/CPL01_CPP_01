@@ -1,6 +1,6 @@
-//================================================================================//
-//==================== Pakon Ruchirekserikun 58030205 ============================//
-//================================================================================//
+//***************************************************//
+//********* Pakon Ruchirekserikun 58030205 **********//
+//***************************************************//
 
 #include <windows.h>
 
@@ -77,47 +77,142 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 
 
 		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Blue
-
 		RoundRect(hdc, 70, 285, 230, 370, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(204, 245, 39))); //Yellow
+		RoundRect(hdc, 300, 285, 460, 370, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(113, 230, 89))); //Green
+		RoundRect(hdc, 530, 285, 690, 370, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(250, 111, 92))); //Red
+		RoundRect(hdc, 760, 285, 920, 370, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(250, 92, 245))); //Pink
+		RoundRect(hdc, 990, 285, 1150, 370, 42, 38);
 
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 255, 255))); // White
 		RoundRect(hdc, 70, 360, 230, 380, 43, 40);
+		RoundRect(hdc, 300, 360, 460, 380, 43, 40);
+		RoundRect(hdc, 530, 360, 690, 380, 43, 40);
+		RoundRect(hdc, 760, 360, 920, 380, 43, 40);
+		RoundRect(hdc, 990, 360, 1150, 380, 43, 40);
 
-		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Blue
+		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Sky Blue
 		RoundRect(hdc, 85, 280, 215, 450, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(204, 245, 39))); //Yellow
+		RoundRect(hdc, 315, 280, 445, 450, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(113, 230, 89))); //Green
+		RoundRect(hdc, 545, 280, 675, 450, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(250, 111, 92))); //Red
+		RoundRect(hdc, 775, 280, 905, 450, 42, 38);
+		SelectObject(hdc, CreateSolidBrush(RGB(250, 92, 245))); //Pink
+		RoundRect(hdc, 1005, 280, 1135, 450, 42, 38);
 
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 255, 255))); // White
-
 		Ellipse(hdc, 90, 260, 210, 420);
+		Ellipse(hdc, 320, 260, 440, 420);
+		Ellipse(hdc, 550, 260, 670, 420);
+		Ellipse(hdc, 780, 260, 900, 420);
+		Ellipse(hdc, 1010, 260, 1130, 420);
 
-		Ellipse(hdc, 100, 350, 200, 380); //bag
+		//bag
+		Ellipse(hdc, 100, 350, 200, 380);
+		Ellipse(hdc, 330, 350, 430, 380);
+		Ellipse(hdc, 560, 350, 660, 380);
+		Ellipse(hdc, 790, 350, 890, 380);
+		Ellipse(hdc, 1020, 350, 1120, 380);
 
-		MoveToEx(hdc, 150, 425, NULL); //leg
+		//leg
+		MoveToEx(hdc, 150, 425, NULL); 
 		LineTo(hdc, 150, 450);
+		MoveToEx(hdc, 380, 425, NULL); 
+		LineTo(hdc, 380, 450);
+		MoveToEx(hdc, 610, 425, NULL); 
+		LineTo(hdc, 610, 450);
+		MoveToEx(hdc, 840, 425, NULL); 
+		LineTo(hdc, 840, 450);
+		MoveToEx(hdc, 1070, 425, NULL); 
+		LineTo(hdc, 1070, 450);
 
 		//**************** HEAD ****************//
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 0, 0)));
 		Ellipse(hdc, 70, 150, 230, 310);
-		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Blue
+		Ellipse(hdc, 300, 150, 460, 310);
+		Ellipse(hdc, 530, 150, 690, 310);
+		Ellipse(hdc, 760, 150, 920, 310);
+		Ellipse(hdc, 990, 150, 1150, 310);
+		
+		
+		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Sky Blue
 		Ellipse(hdc, 50, 100, 250, 300);
+		SelectObject(hdc, CreateSolidBrush(RGB(204, 245, 39))); //Yellow
+		Ellipse(hdc, 280, 100, 480, 300);
+		SelectObject(hdc, CreateSolidBrush(RGB(113, 230, 89))); //Green
+		Ellipse(hdc, 510, 100, 710, 300);
+		SelectObject(hdc, CreateSolidBrush(RGB(250, 111, 92))); //Red
+		Ellipse(hdc, 740, 100, 940, 300);
+		SelectObject(hdc, CreateSolidBrush(RGB(250, 92, 245))); //Pink
+		Ellipse(hdc, 970, 100, 1170, 300);
+
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 255, 255))); // White
 		Ellipse(hdc, 60, 140, 240, 300);
+		Ellipse(hdc, 290, 140, 470, 300);
+		Ellipse(hdc, 520, 140, 700, 300);
+		Ellipse(hdc, 750, 140, 930, 300);
+		Ellipse(hdc, 980, 140, 1160, 300);
 
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 255, 255))); // White
-		Ellipse(hdc, 100, 107, 150, 180); //Left Eye
-		Ellipse(hdc, 150, 107, 200, 180); //Right Eye
+		//Left Eye
+		Ellipse(hdc, 100, 107, 150, 180);
+		Ellipse(hdc, 330, 107, 380, 180);
+		Ellipse(hdc, 560, 107, 610, 180);
+		Ellipse(hdc, 790, 107, 840, 180);
+		Ellipse(hdc, 1020, 107, 1070, 180);
+
+		//Right Eye
+		Ellipse(hdc, 150, 107, 200, 180);
+		Ellipse(hdc, 380, 107, 430, 180);
+		Ellipse(hdc, 610, 107, 660, 180);
+		Ellipse(hdc, 840, 107, 890, 180);
+		Ellipse(hdc, 1070, 107, 1120, 180);
 
 		SelectObject(hdc, CreateSolidBrush(RGB(0, 0, 0))); // Black
-		Ellipse(hdc, 128, 130, 143, 150); //Eye1
-		Ellipse(hdc, 158, 130, 173, 150); //Eye2
+		//Eye1
+		Ellipse(hdc, 128, 130, 143, 150);
+		Ellipse(hdc, 358, 130, 373, 150);
+		Ellipse(hdc, 588, 130, 603, 150);
+		Ellipse(hdc, 818, 130, 833, 150);
+		Ellipse(hdc, 1048, 130, 1063, 150);
+		//Eye2
+		Ellipse(hdc, 158, 130, 173, 150); 
+		Ellipse(hdc, 388, 130, 403, 150);
+		Ellipse(hdc, 618, 130, 633, 150);
+		Ellipse(hdc, 848, 130, 863, 150);
+		Ellipse(hdc, 1078, 130, 1093, 150);
 
+		//Nose
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 2, 5))); //Red
-		Ellipse(hdc, 135, 155, 165, 185); //Nose
+		Ellipse(hdc, 135, 155, 165, 185);
+		Ellipse(hdc, 365, 155, 395, 185);
+		Ellipse(hdc, 595, 155, 625, 185);
+		Ellipse(hdc, 825, 155, 855, 185);
+		Ellipse(hdc, 1055, 155, 1085, 185);
 
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 2, 5))); //Red
 		MoveToEx(hdc, 150, 185, NULL);
 		LineTo(hdc, 150, 240);
-		Ellipse(hdc, 140, 240, 160, 270); //Mouth
+		MoveToEx(hdc, 380, 185, NULL);
+		LineTo(hdc, 380, 240);
+		MoveToEx(hdc, 610, 185, NULL);
+		LineTo(hdc, 610, 240);
+		MoveToEx(hdc, 840, 185, NULL);
+		LineTo(hdc, 840, 240);
+		MoveToEx(hdc, 1070, 185, NULL);
+		LineTo(hdc, 1070, 240);
+
+		//Mouth
+		Ellipse(hdc, 140, 240, 160, 270);
+		Ellipse(hdc, 370, 240, 390, 270);
+		Ellipse(hdc, 600, 240, 620, 270);
+		Ellipse(hdc, 830, 240, 850, 270);
+		Ellipse(hdc, 1060, 240, 1080, 270);
 
 		MoveToEx(hdc, 130, 195, NULL);
 		LineTo(hdc, 80, 180);
@@ -135,11 +230,24 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 
 		SelectObject(hdc, CreateSolidBrush(RGB(204, 245, 39))); //Yellow
 		Ellipse(hdc, 135, 300, 165, 330); //bell
+		Ellipse(hdc, 365, 300, 395, 330);
+		Ellipse(hdc, 595, 300, 625, 330);
+		Ellipse(hdc, 825, 300, 855, 330);
+		Ellipse(hdc, 1055, 300, 1085, 330);
 
 		SelectObject(hdc, CreateSolidBrush(RGB(255, 255, 255))); // White
-		Ellipse(hdc, 80, 460, 150, 440); // Left Foot
-		Ellipse(hdc, 150, 460, 220, 440); // Right Foot
-
+		// Left Foot
+		Ellipse(hdc, 80, 460, 150, 440); 
+		Ellipse(hdc, 310, 460, 380, 440);
+		Ellipse(hdc, 540, 460, 610, 440);
+		Ellipse(hdc, 770, 460, 840, 440);
+		Ellipse(hdc, 1000, 460, 1070, 440);
+		// Right Foot
+		Ellipse(hdc, 150, 460, 220, 440); 
+		Ellipse(hdc, 380, 460, 450, 440);
+		Ellipse(hdc, 610, 460, 680, 440);
+		Ellipse(hdc, 840, 460, 910, 440);
+		Ellipse(hdc, 1070, 460, 1140, 440);
 
 		EndPaint(hwnd, &ps);
 		return 0;
