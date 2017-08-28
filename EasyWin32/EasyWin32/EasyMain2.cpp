@@ -62,7 +62,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
-		Ellipse(hdc, 300, 300, 120, 120);
+		Rectangle(hdc, 100, 100, 10, 200);
 		EndPaint(hwnd, &ps);
 		return 0;
 
