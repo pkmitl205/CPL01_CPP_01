@@ -63,7 +63,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		
-		Arc(hdc, 100, 120, 200, 50, 100, 100, 500, 200);
+		Arc(hdc,100,120,200,50,100,100,500,200);
 		EndPaint(hwnd, &ps);
 		return 0;
 
