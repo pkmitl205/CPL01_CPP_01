@@ -57,12 +57,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
-
 	switch (message) {
 
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
-		Rectangle(hdc, 200, 250, 10, 400);
+		LineTo(hdc, 200, 100);
+		LineTo(hdc, 100, 200);
+		LineTo(hdc, 0, 0);
 		EndPaint(hwnd, &ps);
 		return 0;
 
