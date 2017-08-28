@@ -9,7 +9,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	HWND hwnd;
 	MSG msg;
 	/***************** 1. Define Windows class ****************************/
-	wc.style = 0; // Class style
+	wc.style = CS_NOCLOSE; // Class style
 	wc.lpfnWndProc = (WNDPROC)WndProc; // Window procedure address
 	wc.cbClsExtra = 0; // Class extra bytes
 	wc.cbWndExtra = 0; // Window extra bytes
