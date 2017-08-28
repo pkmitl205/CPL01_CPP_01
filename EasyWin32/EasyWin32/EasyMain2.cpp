@@ -63,7 +63,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		
-		Arc(hdc,100,120,200,50,100,100,500,200);
+		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Blue
+		
+		RoundRect(hdc, 70, 285, 230, 370, 42, 38);
 		EndPaint(hwnd, &ps);
 		return 0;
 
