@@ -9,7 +9,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	HWND hwnd;
 	MSG msg;
 	/***************** 1. Define Windows class ****************************/
-	wc.style = CS_NOCLOSE; // Class style
+	wc.style = 0; // Class style
 	wc.lpfnWndProc = (WNDPROC)WndProc; // Window procedure address
 	wc.cbClsExtra = 0; // Class extra bytes
 	wc.cbWndExtra = 0; // Window extra bytes
@@ -31,7 +31,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_OVERLAPPEDWINDOW, // Window style
 		600, // Horizontal position
 		600, // Vertical position
-		CW_USEDEFAULT, // Initial width
+		600, // Initial width
 		CW_USEDEFAULT, // Initial height
 		HWND_DESKTOP, // Handle of parent window
 		NULL, // Menu handle
