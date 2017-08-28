@@ -16,7 +16,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wc.hInstance = hInstance; // Instance handle
 	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO); // Icon handle
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW); // Cursor handle
-	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 0); // Background color
+	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 12); // Background color
 	wc.lpszMenuName = NULL; // Menu name
 	wc.lpszClassName = "MyWndClass"; // WNDCLASS name
 
@@ -63,9 +63,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		
-		SelectObject(hdc, CreatePen(PS_DASH, 1, RGB(255, 0, 0)));
+		SelectObject(hdc, CreatePen(PS_DASH, 1, RGB(0, 0, 0)));
 		Ellipse(hdc, 10, 100, 200, 200);
-
 		EndPaint(hwnd, &ps);
 		return 0;
 
