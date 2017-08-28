@@ -31,8 +31,8 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_OVERLAPPEDWINDOW, // Window style
 		600, // Horizontal position
 		600, // Vertical position
-		600, // Initial width
-		600, // Initial height
+		CW_USEDEFAULT, // Initial width
+		CW_USEDEFAULT, // Initial height
 		HWND_DESKTOP, // Handle of parent window
 		NULL, // Menu handle
 		hInstance, // Application's instance handle
@@ -62,17 +62,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-		SetPixel(hdc, 200, 50, RGB(0, 0, 0));
-
+		Ellipse(hdc, 300, 300, 120, 120);
 		EndPaint(hwnd, &ps);
 		return 0;
 
