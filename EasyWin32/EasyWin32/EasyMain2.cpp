@@ -32,7 +32,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		600, // Horizontal position
 		600, // Vertical position
 		600, // Initial width
-		CW_USEDEFAULT, // Initial height
+		600, // Initial height
 		HWND_DESKTOP, // Handle of parent window
 		NULL, // Menu handle
 		hInstance, // Application's instance handle
