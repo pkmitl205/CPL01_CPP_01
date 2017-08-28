@@ -26,7 +26,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wc.lpszMenuName = NULL; // Menu name
 	wc.lpszClassName = "MyWndClass"; // WNDCLASS name
 
-									 /***************** 2. Register the Windows class **********************/
+	/***************** 2. Register the Windows class **********************/
 
 	RegisterClass(&wc);
 
