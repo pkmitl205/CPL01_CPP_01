@@ -30,7 +30,7 @@ int     	WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		"CPL01_CPP_02", // Window title
 		WS_OVERLAPPEDWINDOW, // Window style
 		600, // Horizontal position
-		CW_USEDEFAULT, // Vertical position
+		600, // Vertical position
 		CW_USEDEFAULT, // Initial width
 		CW_USEDEFAULT, // Initial height
 		HWND_DESKTOP, // Handle of parent window
