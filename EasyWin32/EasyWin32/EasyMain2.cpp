@@ -63,9 +63,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		
-		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Blue
-		
-		RoundRect(hdc, 70, 285, 230, 370, 42, 38);
+		SelectObject(hdc, CreatePen(PS_SOLID, 1, RGB(249, 64, 255)));
+		Ellipse(hdc, 10, 100, 200, 200);
 		EndPaint(hwnd, &ps);
 		return 0;
 
