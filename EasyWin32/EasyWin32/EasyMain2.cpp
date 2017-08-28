@@ -57,13 +57,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
-	POINT vertices[] = { { 200, 100 },{ 300, 300 },{ 100, 300 } };
+	
 	switch (message) {
 
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		
-		Polygon(hdc, vertices, sizeof(vertices) / sizeof(vertices[0]));
+		MoveToEx(hdc, 200, 300, NULL);
+		LineTo(hdc, 400, 300);
 		EndPaint(hwnd, &ps);
 		return 0;
 
