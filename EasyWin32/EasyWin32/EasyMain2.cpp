@@ -221,12 +221,77 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 		MoveToEx(hdc, 130, 205, NULL);
 		LineTo(hdc, 80, 220);
 
+		MoveToEx(hdc, 360, 195, NULL);
+		LineTo(hdc, 310, 180);
+		MoveToEx(hdc, 360, 200, NULL);
+		LineTo(hdc, 310, 200);
+		MoveToEx(hdc, 360, 205, NULL);
+		LineTo(hdc, 310, 220);
+
+		MoveToEx(hdc, 590, 195, NULL);
+		LineTo(hdc, 540, 180);
+		MoveToEx(hdc, 590, 200, NULL);
+		LineTo(hdc, 540, 200);
+		MoveToEx(hdc, 590, 205, NULL);
+		LineTo(hdc, 540, 220);
+
+		MoveToEx(hdc, 820, 195, NULL);
+		LineTo(hdc, 770, 180);
+		MoveToEx(hdc, 820, 200, NULL);
+		LineTo(hdc, 770, 200);
+		MoveToEx(hdc, 820, 205, NULL);
+		LineTo(hdc, 770, 220);
+
+		MoveToEx(hdc, 820, 195, NULL);
+		LineTo(hdc, 770, 180);
+		MoveToEx(hdc, 820, 200, NULL);
+		LineTo(hdc, 770, 200);
+		MoveToEx(hdc, 820, 205, NULL);
+		LineTo(hdc, 770, 220);
+
+		MoveToEx(hdc, 1050, 195, NULL);
+		LineTo(hdc, 1000, 180);
+		MoveToEx(hdc, 1050, 200, NULL);
+		LineTo(hdc, 1000, 200);
+		MoveToEx(hdc, 1050, 205, NULL);
+		LineTo(hdc, 1000, 220);
+
+
+
 		MoveToEx(hdc, 170, 195, NULL);
 		LineTo(hdc, 220, 180);
 		MoveToEx(hdc, 170, 200, NULL);
 		LineTo(hdc, 220, 200);
 		MoveToEx(hdc, 170, 205, NULL);
 		LineTo(hdc, 220, 220);
+
+		MoveToEx(hdc, 400, 195, NULL);
+		LineTo(hdc, 450, 180);
+		MoveToEx(hdc, 400, 200, NULL);
+		LineTo(hdc, 450, 200);
+		MoveToEx(hdc, 400, 205, NULL);
+		LineTo(hdc, 450, 220);
+
+		MoveToEx(hdc, 630, 195, NULL);
+		LineTo(hdc, 680, 180);
+		MoveToEx(hdc, 630, 200, NULL);
+		LineTo(hdc, 680, 200);
+		MoveToEx(hdc, 630, 205, NULL);
+		LineTo(hdc, 680, 220);
+
+		MoveToEx(hdc, 860, 195, NULL);
+		LineTo(hdc, 910, 180);
+		MoveToEx(hdc, 860, 200, NULL);
+		LineTo(hdc, 910, 200);
+		MoveToEx(hdc, 860, 205, NULL);
+		LineTo(hdc, 910, 220);
+
+		MoveToEx(hdc, 1090, 195, NULL);
+		LineTo(hdc, 1140, 180);
+		MoveToEx(hdc, 1090, 200, NULL);
+		LineTo(hdc, 1140, 200);
+		MoveToEx(hdc, 1090, 205, NULL);
+		LineTo(hdc, 1140, 220);
 
 		SelectObject(hdc, CreateSolidBrush(RGB(204, 245, 39))); //Yellow
 		Ellipse(hdc, 135, 300, 165, 330); //bell
