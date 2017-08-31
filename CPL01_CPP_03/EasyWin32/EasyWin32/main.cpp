@@ -5,9 +5,10 @@
 HINSTANCE hInst;							// current instance
 TCHAR szTitle[] = "Easywin32";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";			// the class name
-void Marker(LONG x, LONG y, HWND hwnd);
+void Marker(LONG x, LONG y, int Index, HWND hwnd);
+int Index;
 BOOL fDraw = FALSE; POINT ptPrevious;
-
+COLORREF Color[] = { RGB(255,0,0),RGB(0,255,0),RGB(0,0,255),RGB(0,0,0) };
 // Foward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
@@ -162,14 +163,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-
 		// TODO: Add any drawing code here...
+
 		GetClientRect(hWnd, &rt);
 		DrawText(hdc, szHello, strlen(szHello), &rt, DT_CENTER);
-		Marker(50, 50, hWnd);
+		Marker(50, 50, Index, hWnd);
 		EndPaint(hWnd, &ps);
-
 		break;
+
 
 	case WM_CLOSE:
 		
@@ -185,12 +186,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-void Marker(LONG x, LONG y, HWND hwnd)
+void Marker(LONG x, LONG y, int Index, HWND hwnd)
 {
 	HDC hdc;
 	HPEN hPen;
 	hdc = GetDC(hwnd);
-	hPen = CreatePen(PS_DOT, 1, RGB(255, 0, 0));
+	hPen = CreatePen(PS_DOT, 1, Color[Index]);
 
 	SelectObject(hdc, hPen);
 	MoveToEx(hdc, (int)x - 10, (int)y, (LPPOINT)NULL);
