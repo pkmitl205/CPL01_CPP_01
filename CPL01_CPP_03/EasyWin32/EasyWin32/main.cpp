@@ -135,9 +135,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		// TODO: Add any drawing code here...
 		GetClientRect(hWnd, &rt);
 		DrawText(hdc, szHello, strlen(szHello), &rt, DT_CENTER);
+		Marker(50, 50, hWnd);
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_CLOSE:
+		
 		DestroyWindow(hWnd);
 		break;
 	case WM_DESTROY:
