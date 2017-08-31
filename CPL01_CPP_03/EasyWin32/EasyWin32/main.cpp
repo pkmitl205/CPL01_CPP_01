@@ -7,6 +7,7 @@ TCHAR szTitle[] = "Easywin32";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";			// the class name
 void Marker(LONG x, LONG y, HWND hwnd);
 
+
 // Foward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
@@ -130,6 +131,35 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	switch (message)
 	{
+	case WM_LBUTTONDOWN:
+		fDraw = TRUE;
+		ptPrevious.x = LOWORD(lParam);
+		ptPrevious.y = HIWORD(lParam);
+		return 0L;
+
+	case WM_LBUTTONUP:
+		if (fDraw)
+		{
+			hdc = GetDC(hWnd);
+			MoveToEx(hdc, ptPrevious.x, ptPrevious.y, NULL);
+			LineTo(hdc, LOWORD(lParam), HIWORD(lParam));
+			ReleaseDC(hWnd, hdc);
+		}
+		fDraw = FALSE;
+		return 0L;
+
+	case WM_MOUSEMOVE:
+		if (fDraw)
+		{
+			hdc = GetDC(hWnd);
+			MoveToEx(hdc, ptPrevious.x, ptPrevious.y, NULL);
+			LineTo(hdc, ptPrevious.x = LOWORD(lParam),
+				ptPrevious.y = HIWORD(lParam));
+			ReleaseDC(hWnd, hdc);
+		}
+		return 0L;
+
+
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 
@@ -150,6 +180,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
+
 	}
 	return 0;
 }
