@@ -162,10 +162,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0L;
 
 	case WM_PAINT:
+		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Blue
 		hdc = BeginPaint(hWnd, &ps);
 		// TODO: Add any drawing code here...
 
 		GetClientRect(hWnd, &rt);
+
 		DrawText(hdc, szHello, strlen(szHello), &rt, DT_CENTER);
 		Marker(50, 50, Index, hWnd);
 		EndPaint(hWnd, &ps);
@@ -214,7 +216,6 @@ void Marker(LONG x, LONG y, int Index, HWND hwnd)
 	HPEN hPen;
 	hdc = GetDC(hwnd);
 	hPen = CreatePen(PS_DOT, 5, Color[Index]);
-
 	SelectObject(hdc, hPen);
 	MoveToEx(hdc, (int)x - 10, (int)y, (LPPOINT)NULL);
 	LineTo(hdc, (int)x + 10, (int)y);
