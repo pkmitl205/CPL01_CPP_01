@@ -5,6 +5,7 @@
 HINSTANCE hInst;							// current instance
 TCHAR szTitle[] = "Easywin32";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";			// the class name
+void Marker(LONG x, LONG y, HWND hwnd);
 
 // Foward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -137,7 +138,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		DrawText(hdc, szHello, strlen(szHello), &rt, DT_CENTER);
 		Marker(50, 50, hWnd);
 		EndPaint(hWnd, &ps);
+
 		break;
+
 	case WM_CLOSE:
 		
 		DestroyWindow(hWnd);
@@ -167,5 +170,3 @@ void Marker(LONG x, LONG y, HWND hwnd)
 	DeleteObject(hPen);
 	ReleaseDC(hwnd, hdc);
 }
-
-
