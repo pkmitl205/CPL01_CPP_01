@@ -6,7 +6,7 @@ HINSTANCE hInst;							// current instance
 TCHAR szTitle[] = "Easywin32";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";			// the class name
 void Marker(LONG x, LONG y, HWND hwnd);
-
+BOOL fDraw = FALSE; POINT ptPrevious;
 
 // Foward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
