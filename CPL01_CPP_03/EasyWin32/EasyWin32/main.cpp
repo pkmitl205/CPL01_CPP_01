@@ -148,3 +148,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	return 0;
 }
+
+void Marker(LONG x, LONG y, HWND hwnd)
+{
+	HDC hdc;
+	HPEN hPen;
+	hdc = GetDC(hwnd);
+	hPen = CreatePen(PS_DOT, 1, RGB(255, 0, 0));
+
+	SelectObject(hdc, hPen);
+	MoveToEx(hdc, (int)x - 10, (int)y, (LPPOINT)NULL);
+	LineTo(hdc, (int)x + 10, (int)y);
+	MoveToEx(hdc, (int)x, (int)y - 10, (LPPOINT)NULL);
+	LineTo(hdc, (int)x, (int)y + 10);
+
+	DeleteObject(hPen);
+	ReleaseDC(hwnd, hdc);
+}
+
+
