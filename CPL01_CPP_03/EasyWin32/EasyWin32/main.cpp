@@ -9,6 +9,7 @@ void Marker(LONG x, LONG y, int Index, HWND hwnd);
 int Index;
 BOOL fDraw = FALSE; POINT ptPrevious;
 COLORREF Color[] = { RGB(255,0,0),RGB(0,255,0),RGB(0,0,255),RGB(0,0,0) };
+
 // Foward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
@@ -160,7 +161,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		return 0L;
 
-
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		// TODO: Add any drawing code here...
@@ -171,19 +171,41 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		break;
 
-
 	case WM_CLOSE:
 		
 		DestroyWindow(hWnd);
 		break;
+
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 
+	case WM_KEYDOWN:
+		switch (wParam)
+		{
+		case VK_LEFT:
+
+			// Process the LEFT ARROW key. 
+
+			if (Index<4)
+			{
+				Index++;
+			}
+			else
+			{
+				Index = 0;
+			}
+			InvalidateRect(hWnd, NULL, TRUE);
+		default:
+			break;
+
+		}
+		break;
 	}
 	return 0;
+
 }
 
 void Marker(LONG x, LONG y, int Index, HWND hwnd)
@@ -191,7 +213,7 @@ void Marker(LONG x, LONG y, int Index, HWND hwnd)
 	HDC hdc;
 	HPEN hPen;
 	hdc = GetDC(hwnd);
-	hPen = CreatePen(PS_DOT, 1, Color[Index]);
+	hPen = CreatePen(PS_DOT, 5, Color[Index]);
 
 	SelectObject(hdc, hPen);
 	MoveToEx(hdc, (int)x - 10, (int)y, (LPPOINT)NULL);
