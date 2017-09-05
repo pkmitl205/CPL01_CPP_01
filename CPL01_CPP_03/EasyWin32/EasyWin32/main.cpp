@@ -7,6 +7,10 @@ TCHAR szTitle[] = "Easywin32";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";			// the class name
 void Marker(LONG x, LONG y, int Index, HWND hwnd);
 int Index;
+int HelloIndex =1 ;
+char szHello1[50] = { 0 };
+
+HPEN hPen;
 BOOL fDraw = FALSE; POINT ptPrevious;
 COLORREF Color[] = { RGB(255,0,0),RGB(0,255,0),RGB(0,0,255),RGB(0,0,0) };
 
@@ -94,9 +98,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 	hWnd = CreateWindow(
 		szWindowClass,
-		szTitle, 
+		szTitle,
 		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, 
+		CW_USEDEFAULT,
 		0,
 		CW_USEDEFAULT,
 		0, NULL, NULL,
@@ -129,7 +133,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	PAINTSTRUCT ps;
 	HDC hdc;
 	RECT rt;
-	char szHello[] = "Hello, C-Free!";
+	char szHello[50] = "Hello, C-Free!";
 
 	switch (message)
 	{
@@ -162,19 +166,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0L;
 
 	case WM_PAINT:
-		SelectObject(hdc, CreateSolidBrush(RGB(53, 46, 255))); //Blue
 		hdc = BeginPaint(hWnd, &ps);
+
 		// TODO: Add any drawing code here...
-
 		GetClientRect(hWnd, &rt);
-
+		
 		DrawText(hdc, szHello, strlen(szHello), &rt, DT_CENTER);
 		Marker(50, 50, Index, hWnd);
 		EndPaint(hWnd, &ps);
 		break;
 
 	case WM_CLOSE:
-		
+
 		DestroyWindow(hWnd);
 		break;
 
@@ -183,10 +186,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
-
+	
+	case WM_CHAR:
+		hdc = GetDC(hWnd);
+		szHello1[HelloIndex] =   (TCHAR)wParam;;
+		HelloIndex++;
+		TextOut(hdc, 10, 10, szHello1, 10);
+		ReleaseDC(hWnd, hdc);
+		break;
 	case WM_KEYDOWN:
 		switch (wParam)
 		{
+
 		case VK_LEFT:
 
 			// Process the LEFT ARROW key. 
@@ -200,9 +211,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				Index = 0;
 			}
 			InvalidateRect(hWnd, NULL, TRUE);
-		default:
 			break;
 
+
+
+		default : 
+			break;
 		}
 		break;
 	}
@@ -213,9 +227,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void Marker(LONG x, LONG y, int Index, HWND hwnd)
 {
 	HDC hdc;
-	HPEN hPen;
+
 	hdc = GetDC(hwnd);
 	hPen = CreatePen(PS_DOT, 5, Color[Index]);
+	
 	SelectObject(hdc, hPen);
 	MoveToEx(hdc, (int)x - 10, (int)y, (LPPOINT)NULL);
 	LineTo(hdc, (int)x + 10, (int)y);
