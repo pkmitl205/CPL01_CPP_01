@@ -3,3 +3,8 @@
 
 #define ID_FILE_EXIT 9001
 #define ID_STUFF_GO 9002
+
+#define ID_COLOR_BLACK 9003
+#define ID_COLOR_RED 9004
+#define ID_COLOR_GREEN 9005
+#define ID_COLOR_YELLOW  9006

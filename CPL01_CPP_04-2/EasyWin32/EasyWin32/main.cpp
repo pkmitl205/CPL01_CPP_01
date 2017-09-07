@@ -7,7 +7,13 @@ HINSTANCE hInst;					// current instance
 TCHAR szTitle[] = "L9";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";				// the class name
 
-												// Foward declarations of functions included in this code module:
+void Marker(LONG x, LONG y, int Index, HWND hwnd);
+int Index;
+HPEN hPen;
+COLORREF Color[] = { RGB(255,0,0),RGB(0,255,0),RGB(0,0,255),RGB(0,0,0);
+
+
+// Foward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -125,6 +131,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	switch (message)
 	{
+
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		// TODO: Add any drawing code here...
@@ -154,4 +161,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
+}
+void Marker(LONG x, LONG y, int Index, HWND hwnd)
+{
+	HDC hdc;
+
+	hdc = GetDC(hwnd);
+	hPen = CreatePen(PS_DOT, 5, Color[Index]);
+
+	SelectObject(hdc, hPen);
+	MoveToEx(hdc, (int)x - 10, (int)y, (LPPOINT)NULL);
+	LineTo(hdc, (int)x + 10, (int)y);
+	MoveToEx(hdc, (int)x, (int)y - 10, (LPPOINT)NULL);
+	LineTo(hdc, (int)x, (int)y + 10);
+
+	DeleteObject(hPen);
+	ReleaseDC(hwnd, hdc);
 }
