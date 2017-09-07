@@ -10,7 +10,8 @@ TCHAR szWindowClass[] = "WinApp";				// the class name
 void Marker(LONG x, LONG y, int Index, HWND hwnd);
 int Index;
 HPEN hPen;
-COLORREF Color[] = { RGB(255,0,0),RGB(0,255,0),RGB(0,0,255),RGB(0,0,0);
+COLORREF Color[] = { RGB(255,0,0),RGB(0,255,0),RGB(0,0,255),RGB(0,0,0) };
+BOOL fDraw = FALSE; POINT ptPrevious;
 
 
 // Foward declarations of functions included in this code module:
@@ -131,6 +132,35 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	switch (message)
 	{
+	
+	case WM_LBUTTONDOWN:
+		fDraw = TRUE;
+		ptPrevious.x = LOWORD(lParam);
+		ptPrevious.y = HIWORD(lParam);
+		return 0L;
+
+	case WM_LBUTTONUP:
+		if (fDraw)
+		{
+			hdc = GetDC(hWnd);
+			MoveToEx(hdc, ptPrevious.x, ptPrevious.y, NULL);
+			LineTo(hdc, LOWORD(lParam), HIWORD(lParam));
+			ReleaseDC(hWnd, hdc);
+		}
+		fDraw = FALSE;
+		return 0L;
+
+	case WM_MOUSEMOVE:
+		if (fDraw)
+		{
+			hdc = GetDC(hWnd);
+			SelectObject(hdc, CreatePen(PS_DASH, 2, Color[Index]));
+			MoveToEx(hdc, ptPrevious.x, ptPrevious.y, NULL);
+			LineTo(hdc, ptPrevious.x = LOWORD(lParam),
+				ptPrevious.y = HIWORD(lParam));
+			ReleaseDC(hWnd, hdc);
+		}
+		return 0L;
 
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
@@ -146,8 +176,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case ID_FILE_EXIT:
 			PostMessage(hWnd, WM_CLOSE, 0, 0);
 			break;
-		case ID_STUFF_GO:
 
+		case ID_COLOR_RED :
+			Index = 0;
+			break;
+		case ID_COLOR_GREEN:
+			Index = 1;
+			break;
+		case ID_COLOR_BLUE:
+			Index = 2;
+			break;
+		case ID_COLOR_BLACK:
+			Index = 3;
 			break;
 		}
 		break;
