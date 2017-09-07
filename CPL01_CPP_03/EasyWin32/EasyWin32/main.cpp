@@ -8,7 +8,7 @@ TCHAR szWindowClass[] = "WinApp";			// the class name
 void Marker(LONG x, LONG y, int Index, HWND hwnd);
 int Index;
 int HelloIndex =1 ;
-char szHello1[50] = { 0 };
+char szHello1[] = {0};
 
 HPEN hPen;
 BOOL fDraw = FALSE; POINT ptPrevious;
@@ -158,6 +158,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (fDraw)
 		{
 			hdc = GetDC(hWnd);
+			SelectObject(hdc, CreatePen(PS_DASH, 2, Color[Index]));
 			MoveToEx(hdc, ptPrevious.x, ptPrevious.y, NULL);
 			LineTo(hdc, ptPrevious.x = LOWORD(lParam),
 				ptPrevious.y = HIWORD(lParam));
@@ -191,8 +192,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		hdc = GetDC(hWnd);
 		szHello1[HelloIndex] =   (TCHAR)wParam;;
 		HelloIndex++;
-		TextOut(hdc, 10, 10, szHello1, 10);
+
+		TextOut(hdc, 50, 20, szHello1, 20);
 		ReleaseDC(hWnd, hdc);
+
 		break;
 	case WM_KEYDOWN:
 		switch (wParam)
@@ -212,10 +215,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 			InvalidateRect(hWnd, NULL, TRUE);
 			break;
-
-
-
-		default : 
+		 default : 
 			break;
 		}
 		break;
