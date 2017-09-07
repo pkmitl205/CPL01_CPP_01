@@ -147,6 +147,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 		case ID_STUFF_GO:
 
+			MessageBox(hWnd, ("Under Constructure"), ("Menu popup"), MB_OK);
 			break;
 		}
 		break;
