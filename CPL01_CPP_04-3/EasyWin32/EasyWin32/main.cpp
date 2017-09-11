@@ -8,6 +8,7 @@ HINSTANCE hInst;					// current instance
 TCHAR szTitle[] = "L9";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";				// the class name
 
+int x1, y1, x2, y2;
 
 void Marker(LONG x, LONG y, int Index, HWND hwnd);
 int Index;
@@ -134,7 +135,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	switch (message)
 	{
-	
+
 	case WM_LBUTTONDOWN:
 		fDraw = TRUE;
 		ptPrevious.x = LOWORD(lParam);
@@ -166,7 +167,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		// TODO: Add any drawing code here...
-		 
+
 		GetClientRect(hWnd, &rt);
 		DrawText(hdc, szHello, strlen(szHello), &rt, DT_CENTER);
 		EndPaint(hWnd, &ps);
@@ -178,7 +179,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			PostMessage(hWnd, WM_CLOSE, 0, 0);
 			break;
 
-		case ID_COLOR_RED :
+		case ID_COLOR_RED:
 			Index = 0;
 			break;
 		case ID_COLOR_GREEN:

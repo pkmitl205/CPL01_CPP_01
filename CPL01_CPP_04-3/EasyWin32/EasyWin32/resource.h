@@ -1,0 +1,9 @@
+#define IDR_MYMENU 101
+#define IDI_MYICON 201
+
+#define ID_FILE_EXIT 9001
+
+#define ID_COLOR_RED 9003
+#define ID_COLOR_GREEN 9004
+#define ID_COLOR_BLUE 9005
+#define ID_COLOR_BLACK  9006
