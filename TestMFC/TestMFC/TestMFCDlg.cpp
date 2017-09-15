@@ -17,8 +17,10 @@
 
 CTestMFCDlg::CTestMFCDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_TESTMFC_DIALOG, pParent)
-	, m_name(_T("Jack"))
-	, m_email(_T("Jack@hotmail.com"))
+
+	, m_numb1(0)
+	, m_numb2(0)
+	, m_totalb(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -26,14 +28,16 @@ CTestMFCDlg::CTestMFCDlg(CWnd* pParent /*=NULL*/)
 void CTestMFCDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_Name, m_name);
-	DDX_Text(pDX, IDC_Email, m_email);
+	DDX_Text(pDX, IDC_NUM1, m_numb1);
+	DDX_Text(pDX, IDC_NUM2, m_numb2);
+	DDX_Text(pDX, IDC_TOTALB, m_totalb);
 }
 
 BEGIN_MESSAGE_MAP(CTestMFCDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CTestMFCDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_Plus, &CTestMFCDlg::OnClickPlus)
 END_MESSAGE_MAP()
 
 
@@ -97,10 +101,27 @@ void CTestMFCDlg::OnBnClickedOk()
 	// TODO: Add your control notification handler code here
 	CDialogEx::OnOK();
 	{
-		UpdateData(TRUE);
-		MessageBox(m_name);
-		MessageBox(m_email);
+
 	}
 		
 }
 
+
+void CTestMFCDlg::OnClickPlus()
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+	m_totalb = m_numb1 + m_numb2;
+	UpdateData(FALSE);
+}
+
+
+void CTestMFCDlg::OnEnChangeEdit2()
+{
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+
+	// TODO:  Add your control notification handler code here
+}
