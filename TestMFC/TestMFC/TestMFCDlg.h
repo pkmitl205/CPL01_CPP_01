@@ -35,4 +35,8 @@ public:
 	afx_msg void OnButton1();
 	afx_msg void OnButton2();
 	afx_msg void OnButton3();
+	afx_msg void OnEnChangeEdit1();
+	CString m_name;
+	CString m_email;
+	afx_msg void OnEnChangeName();
 };

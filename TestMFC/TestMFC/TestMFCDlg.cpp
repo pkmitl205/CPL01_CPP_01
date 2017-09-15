@@ -15,9 +15,10 @@
 // CTestMFCDlg dialog
 
 
-
 CTestMFCDlg::CTestMFCDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_TESTMFC_DIALOG, pParent)
+	, m_name(_T(""))
+	, m_email(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -25,15 +26,15 @@ CTestMFCDlg::CTestMFCDlg(CWnd* pParent /*=NULL*/)
 void CTestMFCDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_Name, m_name);
+	DDX_Text(pDX, IDC_Email, m_email);
 }
 
 BEGIN_MESSAGE_MAP(CTestMFCDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CTestMFCDlg::OnBnClickedOk)
-	ON_BN_CLICKED(IDC_BUTTON1, &CTestMFCDlg::OnButton1)
-	ON_BN_CLICKED(IDC_BUTTON2, &CTestMFCDlg::OnButton2)
-	ON_BN_CLICKED(IDC_BUTTON3, &CTestMFCDlg::OnButton3)
+	ON_EN_CHANGE(IDC_Name, &CTestMFCDlg::OnEnChangeName)
 END_MESSAGE_MAP()
 
 
@@ -42,6 +43,7 @@ END_MESSAGE_MAP()
 BOOL CTestMFCDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+
 
 	// Set the icon for this dialog.  The framework does this automatically
 	//  when the application's main window is not a dialog
@@ -90,35 +92,27 @@ HCURSOR CTestMFCDlg::OnQueryDragIcon()
 }
 
 
-
 void CTestMFCDlg::OnBnClickedOk()
 {
 	
 	// TODO: Add your control notification handler code here
 	CDialogEx::OnOK();
 	{
-		MessageBox(L"Hello");
+		UpdateData(TRUE);
+		MessageBox(m_name);
+		MessageBox(m_email);
 	}
 		
 }
 
 
-void CTestMFCDlg::OnButton1()
+
+void CTestMFCDlg::OnEnChangeName()
 {
-	// TODO: Add your control notification handler code here
-	MessageBox(L"I'm Niruth Amnuaysilp");
-}
+	// TODO:  If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialogEx::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
 
-
-void CTestMFCDlg::OnButton2()
-{
-	// TODO: Add your control notification handler code here
-	MessageBox(L"I live in Nakornpathom");
-}
-
-
-void CTestMFCDlg::OnButton3()
-{
-	// TODO: Add your control notification handler code here
-	MessageBox(L"I'm young,20 years old");
+	// TODO:  Add your control notification handler code here
 }
