@@ -32,4 +32,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
+	afx_msg void OnButton1();
+	afx_msg void OnButton2();
+	afx_msg void OnButton3();
 };

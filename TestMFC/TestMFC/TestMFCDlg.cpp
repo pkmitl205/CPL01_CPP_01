@@ -31,6 +31,9 @@ BEGIN_MESSAGE_MAP(CTestMFCDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CTestMFCDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_BUTTON1, &CTestMFCDlg::OnButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &CTestMFCDlg::OnButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &CTestMFCDlg::OnButton3)
 END_MESSAGE_MAP()
 
 
@@ -97,4 +100,25 @@ void CTestMFCDlg::OnBnClickedOk()
 		MessageBox(L"Hello");
 	}
 		
+}
+
+
+void CTestMFCDlg::OnButton1()
+{
+	// TODO: Add your control notification handler code here
+	MessageBox(L"I'm Niruth Amnuaysilp");
+}
+
+
+void CTestMFCDlg::OnButton2()
+{
+	// TODO: Add your control notification handler code here
+	MessageBox(L"I live in Nakornpathom");
+}
+
+
+void CTestMFCDlg::OnButton3()
+{
+	// TODO: Add your control notification handler code here
+	MessageBox(L"I'm young,20 years old");
 }
