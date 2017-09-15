@@ -17,8 +17,8 @@
 
 CTestMFCDlg::CTestMFCDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_TESTMFC_DIALOG, pParent)
-	, m_name(_T(""))
-	, m_email(_T(""))
+	, m_name(_T("Jack"))
+	, m_email(_T("Jack@hotmail.com"))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -34,7 +34,6 @@ BEGIN_MESSAGE_MAP(CTestMFCDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CTestMFCDlg::OnBnClickedOk)
-	ON_EN_CHANGE(IDC_Name, &CTestMFCDlg::OnEnChangeName)
 END_MESSAGE_MAP()
 
 
@@ -105,14 +104,3 @@ void CTestMFCDlg::OnBnClickedOk()
 		
 }
 
-
-
-void CTestMFCDlg::OnEnChangeName()
-{
-	// TODO:  If this is a RICHEDIT control, the control will not
-	// send this notification unless you override the CDialogEx::OnInitDialog()
-	// function and call CRichEditCtrl().SetEventMask()
-	// with the ENM_CHANGE flag ORed into the mask.
-
-	// TODO:  Add your control notification handler code here
-}
