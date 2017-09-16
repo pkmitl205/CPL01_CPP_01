@@ -38,6 +38,7 @@ BEGIN_MESSAGE_MAP(CTestMFCDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CTestMFCDlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDC_Plus, &CTestMFCDlg::OnClickPlus)
+	ON_EN_CHANGE(IDC_NUM1, &CTestMFCDlg::OnEnChangeNum1)
 END_MESSAGE_MAP()
 
 
@@ -53,6 +54,7 @@ BOOL CTestMFCDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
+	m_
 	// TODO: Add extra initialization here
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -125,3 +127,4 @@ void CTestMFCDlg::OnEnChangeEdit2()
 
 	// TODO:  Add your control notification handler code here
 }
+

@@ -45,7 +45,8 @@ public:
 //	CString m_total;
 	afx_msg void OnClickPlus();
 	afx_msg void OnEnChangeEdit2();
-	int m_numb1;
-	int m_numb2;
-	int m_totalb;
+//	int m_numb1;
+//	int m_numb2;
+//	int m_totalb;
+	afx_msg void OnEnChangeNum1();
 };
