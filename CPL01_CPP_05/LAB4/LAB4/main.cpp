@@ -6,7 +6,7 @@ HINSTANCE hInst;					// current instance
 TCHAR szTitle[] = "20170920_L4";				// The title bar text
 TCHAR szWindowClass[] = "WinApp";				// the class name
 
-												// Forward declarations of functions included in this code module:
+// Forward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, LPSTR, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);

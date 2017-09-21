@@ -5,10 +5,10 @@
 
 // Global Variables:
 HINSTANCE hInst;					// current instance
-TCHAR szTitle[]="20170920_L6";				// The title bar text
-TCHAR szWindowClass[]="WinApp";				// the class name
+TCHAR szTitle[] = "20170920_L6";				// The title bar text
+TCHAR szWindowClass[] = "WinApp";				// the class name
 BOOL	_bDrawOn = FALSE;
-int		_nXSize,_nYSize;
+int		_nXSize, _nYSize;
 HWND hWnd;
 
 // Foward declarations of functions included in this code module:
@@ -20,41 +20,43 @@ void 				DrawBall(HWND, int, int);
 
 
 int APIENTRY WinMain(HINSTANCE hInstance,
-                     HINSTANCE hPrevInstance,
-                     LPSTR     lpCmdLine,
-                     int       nCmdShow)
+	HINSTANCE hPrevInstance,
+	LPSTR     lpCmdLine,
+	int       nCmdShow)
 {
- 	// TODO: Place code here.
+	// TODO: Place code here.
 	MSG msg;
 
 	// Register Class 
 	MyRegisterClass(hInstance);
 
 	// Perform application initialization:
-	if (!InitInstance (hInstance, nCmdShow)) 
+	if (!InitInstance(hInstance, nCmdShow))
 	{
 		return FALSE;
 	}
-	while(TRUE)
+	while (TRUE)
 	{
-		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
-			if(msg.message==WM_QUIT)
+			if (msg.message == WM_QUIT)
 			{
 				return msg.wParam;
-			}else
+			}
+			else
 			{
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
-		}else
+		}
+		else
 		{
-			if(_bDrawOn)
+			if (_bDrawOn)
 			{
-				DrawBall(hWnd,_nXSize, _nYSize);
+				DrawBall(hWnd, _nXSize, _nYSize);
 			}
 		}
-		
+
 	}
 
 }
@@ -76,19 +78,19 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 {
 	WNDCLASSEX wcex;
 
-	wcex.cbSize = sizeof(WNDCLASSEX); 
+	wcex.cbSize = sizeof(WNDCLASSEX);
 
-	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= (WNDPROC)WndProc;
-	wcex.cbClsExtra		= 0;
-	wcex.cbWndExtra		= 0;
-	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon (NULL, IDI_APPLICATION);
-	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
-	wcex.lpszMenuName	= MAKEINTRESOURCE(MyMenu);
-	wcex.lpszClassName	= szWindowClass;
-	wcex.hIconSm		= LoadIcon (NULL, IDI_APPLICATION);
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = (WNDPROC)WndProc;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+	wcex.lpszMenuName = MAKEINTRESOURCE(MyMenu);
+	wcex.lpszClassName = szWindowClass;
+	wcex.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 
 	return RegisterClassEx(&wcex);
 }
@@ -107,20 +109,20 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 
 
-   hInst = hInstance; // Store instance handle in our global variable
+	hInst = hInstance; // Store instance handle in our global variable
 
-   hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
+	hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+	if (!hWnd)
+	{
+		return FALSE;
+	}
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+	ShowWindow(hWnd, nCmdShow);
+	UpdateWindow(hWnd);
 
-   return TRUE;
+	return TRUE;
 }
 
 //
@@ -138,42 +140,43 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	PAINTSTRUCT ps;
 	HDC hdc;
 	RECT rt;
-	char szHello[]="Hello, C-Free!";
-	
-	switch (message) 
+	char szHello[] = "Hello, C-Free!";
+
+	switch (message)
 	{
-		case WM_CREATE:
-			_bDrawOn=FALSE;
-			break;
-		case WM_SIZE:
-			_nXSize=LOWORD(lParam);
-			_nYSize=HIWORD(lParam);			
-			break;
-		case WM_COMMAND:
-			switch(wParam)
+	case WM_CREATE:
+		_bDrawOn = FALSE;
+		break;
+	case WM_SIZE:
+		_nXSize = LOWORD(lParam);
+		_nYSize = HIWORD(lParam);
+		break;
+	case WM_COMMAND:
+		switch (wParam)
+		{
+		case IDM_SHOW:
+			if (_bDrawOn)
 			{
-				case IDM_SHOW:
-					if(_bDrawOn)
-					{
-						_bDrawOn=FALSE;	
-					}else
-					{
-						_bDrawOn=TRUE;
-					}					
-					break;
-				case IDM_QUIT:
-					DestroyWindow(hWnd);
-					break;
+				_bDrawOn = FALSE;
+			}
+			else
+			{
+				_bDrawOn = TRUE;
 			}
 			break;
-		case WM_CLOSE:
+		case IDM_QUIT:
 			DestroyWindow(hWnd);
 			break;
-		case WM_DESTROY:
-			PostQuitMessage(0);
-			break;
-		default:
-			return DefWindowProc(hWnd, message, wParam, lParam);
+		}
+		break;
+	case WM_CLOSE:
+		DestroyWindow(hWnd);
+		break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
 }
