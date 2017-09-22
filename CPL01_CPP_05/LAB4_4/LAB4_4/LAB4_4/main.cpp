@@ -34,8 +34,8 @@ int  WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE, // Window style
 		100, // Horizontal position
 		100, // Vertical position
-		400, // Initial width
-		400, // Initial height
+		310, // Initial width
+		310, // Initial height
 		HWND_DESKTOP, // Handle of parent window
 		NULL, // Menu handle
 		hInstance, // Application's instance handle
@@ -55,8 +55,8 @@ int  WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 }
 
 HWND bt00, bt11, bt22, bt33, bt44, bt55, bt66, bt77, bt88, bt99,
-	 btPlu, btMin, btMul, btDiv, btTotal, btDot,
-	 edit11, edit22, edit33;
+btPlu, btMin, btMul, btDiv, btTotal, btDot,
+edit11, edit22, edit33;
 
 PAINTSTRUCT ps;
 HDC hdc;
@@ -136,7 +136,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 			WS_VISIBLE | WS_CHILD,
 			20, 215, 60, 40,
 			hwnd, (HMENU)bt0, NULL, NULL,
-		);
+			);
 
 		btDot = CreateWindow(TEXT("button"), TEXT("."),
 			WS_VISIBLE | WS_CHILD,
@@ -161,9 +161,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 		//	hwnd, (HMENU)edit1, NULL, NULL
 		//);
 		/*edit22 = CreateWindow(TEXT("edit"), TEXT(""),
-			WS_VISIBLE | WS_CHILD,
-			0, 100, 80, 25,
-			hwnd, (HMENU)edit2, NULL, NULL
+		WS_VISIBLE | WS_CHILD,
+		0, 100, 80, 25,
+		hwnd, (HMENU)edit2, NULL, NULL
 		);*/
 
 		edit33 = CreateWindow(TEXT("edit"), TEXT(""),
@@ -173,43 +173,43 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 		);
 
 		break;
-	
+
 	case WM_COMMAND: {
-			char variable1[50] = "0", variable2[50] = "0", stotal[50] = "0";
-			int v1, v2, total;
-		
-				v1 = atoi(variable1);
-				v2 = atoi(variable2);
+		//char variable1[50] = "0", variable2[50] = "0", stotal[50] = "0";
+		//int v1, v2, total;
 
-		if (LOWORD(wParam) == bt0) 
-		{
-			_itoa(total, stotal, 10);
-			SendMessage((HWND)edit33, (UINT)EM_GETLINE, (WPARAM)1, (LPARAM)&stotal);
-		}
+		//v1 = atoi(variable1);
+		//v2 = atoi(variable2);
+
+		//if (LOWORD(wParam) == bt0)
+		//{
+		//	_itoa(total, stotal, 10);
+		//	SendMessage((HWND)edit33, (UINT)EM_GETLINE, (WPARAM)1, (LPARAM)&stotal);
+		//}
 
 
 
-	//	if (LOWORD(wParam) == bt1) {
-	//		total = v1 + v2;
-	//		_itoa(total, stotal, 10);
-	//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
-	//	}
-	//	if (LOWORD(wParam) == bt2) {
-	//		total = v1 - v2;
-	//		_itoa(total, stotal, 10);
-	//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
-	//	}
-	//	if (LOWORD(wParam) == bt3) {
-	//		total = v1 * v2;
-	//		_itoa(total, stotal, 10);
-	//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
-	//	}
-	//	if (LOWORD(wParam) == bt4) {
-	//		total = v1 / v2;
-	//		_itoa(total, stotal, 10);
-	//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
+		//	if (LOWORD(wParam) == bt1) {
+		//		total = v1 + v2;
+		//		_itoa(total, stotal, 10);
+		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
+		//	}
+		//	if (LOWORD(wParam) == bt2) {
+		//		total = v1 - v2;
+		//		_itoa(total, stotal, 10);
+		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
+		//	}
+		//	if (LOWORD(wParam) == bt3) {
+		//		total = v1 * v2;
+		//		_itoa(total, stotal, 10);
+		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
+		//	}
+		//	if (LOWORD(wParam) == bt4) {
+		//		total = v1 / v2;
+		//		_itoa(total, stotal, 10);
+		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
 	}
-		break;
+					 break;
 	}
 
 	case WM_DESTROY:
