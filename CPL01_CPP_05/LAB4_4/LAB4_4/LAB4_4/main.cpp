@@ -1,6 +1,6 @@
 ﻿#include <windows.h>
-#include <cstdlib>
-#include <iostream>
+#include <cmath>
+#include <string>
 #include "button.h"
 
 LONG WINAPI WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -23,7 +23,7 @@ int  WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wc.lpszMenuName = NULL; // Menu name
 	wc.lpszClassName = "MyWndClass"; // WNDCLASS name
 
-									 /***************** 2. Register the Windows class **********************/
+	/***************** 2. Register the Windows class **********************/
 
 	RegisterClass(&wc);
 
@@ -55,11 +55,11 @@ int  WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 }
 
 HWND bt00, bt11, bt22, bt33, bt44, bt55, bt66, bt77, bt88, bt99,
-btPlu, btMin, btMul, btDiv, btTotal, btDot,
-edit11, edit22, edit33;
+btPlu, btMin, btMul, btDiv, btTotal, btDot, hOut;
 
 PAINTSTRUCT ps;
 HDC hdc;
+
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 	LPARAM lParam)
@@ -155,59 +155,56 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 		);
 		// ================================================
 
-		//edit11 = CreateWindow(TEXT("edit"), TEXT(""),
-		//	WS_VISIBLE | WS_CHILD,
-		//	0, 50, 80, 25,
-		//	hwnd, (HMENU)edit1, NULL, NULL
-		//);
-		/*edit22 = CreateWindow(TEXT("edit"), TEXT(""),
-		WS_VISIBLE | WS_CHILD,
-		0, 100, 80, 25,
-		hwnd, (HMENU)edit2, NULL, NULL
-		);*/
-
-		edit33 = CreateWindow(TEXT("edit"), TEXT(""),
+		hOut = CreateWindow(TEXT("edit"), TEXT(""),
 			WS_VISIBLE | WS_CHILD | ES_MULTILINE | ES_RIGHT | ES_READONLY,
 			20, 10, 255, 50,
 			hwnd, (HMENU)edit3, NULL, NULL
 		);
-
 		break;
 
 	case WM_COMMAND: {
-		//char variable1[50] = "0", variable2[50] = "0", stotal[50] = "0";
-		//int v1, v2, total;
-
-		//v1 = atoi(variable1);
-		//v2 = atoi(variable2);
-
-		//if (LOWORD(wParam) == bt0)
+		char variable1[50] = "0", variable2[50] = "0", stotal[50] = "0";   
+		int v1, v2, total;
+		SendMessage((HWND)hOut, (UINT)EM_GETLINE, (WPARAM)1, (LPARAM)&variable1);
+		
+		if (LOWORD(wParam) == bt0) {
+			char n_bt00[50], out0[50];
+			GetWindowText(bt00, n_bt00, 50);
+		//	strcpy(out0, n_bt00);
+		//	SetWindowText(hOut, out0);
+			SendMessage((HWND)hOut, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&n_bt00);
+		}
+		if (LOWORD(wParam) == bt1) {
+			char n_bt01[50], out1[50];
+			GetWindowText(bt11, n_bt01, 50);
+			SendMessage((HWND)hOut, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&n_bt01);
+		}
+		if (LOWORD(wParam) == Plu) {
+			char btPlu[50], outP[50];
+			GetWindowText(bt11, btPlu, 50);
+			SendMessage((HWND)outP, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&btPlu);
+		}
+		//---------------------- Using Sitch Case---------------------------
+		//switch (wParam)
 		//{
-		//	_itoa(total, stotal, 10);
-		//	SendMessage((HWND)edit33, (UINT)EM_GETLINE, (WPARAM)1, (LPARAM)&stotal);
-		//}
-
-
-
-		//	if (LOWORD(wParam) == bt1) {
-		//		total = v1 + v2;
-		//		_itoa(total, stotal, 10);
-		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
-		//	}
+		//case bt0:
+		//	char n_bt00[50], out0[50];
+		//	GetWindowText(bt00, n_bt00, 50);
+		//	strcpy(out0, n_bt00);
+		//	SetWindowText(hOut, out0);
+		//	break;
+		//---------------------- Using if---------------------------
+		/*if (LOWORD(wParam) == bt1) {
+			char n_bt01[50], out1[50];
+			GetWindowText(bt11, n_bt01, 50);
+			SendMessage((HWND)hOut, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&n_bt01);
+		}*/
 		//	if (LOWORD(wParam) == bt2) {
 		//		total = v1 - v2;
 		//		_itoa(total, stotal, 10);
 		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
 		//	}
-		//	if (LOWORD(wParam) == bt3) {
-		//		total = v1 * v2;
-		//		_itoa(total, stotal, 10);
-		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
-		//	}
-		//	if (LOWORD(wParam) == bt4) {
-		//		total = v1 / v2;
-		//		_itoa(total, stotal, 10);
-		//		SendMessage((HWND)edit33, (UINT)WM_SETTEXT, (WPARAM)1, (LPARAM)&stotal);
+
 	}
 					 break;
 	}

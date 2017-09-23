@@ -18,3 +18,5 @@
 #define edit1 2005
 #define edit2 2006
 #define edit3 2007
+
+#define SPACE ""
