@@ -323,3 +323,4 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam,
 	}
 	return DefWindowProc(hwnd, message, wParam, lParam);
 }
+//pakon205
